@@ -17,7 +17,9 @@ export const getStaticProps = async (req) => {
   const {
     params: { id },
   } = req;
-  const { data } = await axios(`http://localhost:3000/api/hello`);
+  const { data } = await axios(
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic`
+  );
   const oneCocktail = data.drinks.filter((drink) => drink.idDrink === id)[0];
   return {
     props: {
@@ -30,7 +32,9 @@ export const getStaticProps = async (req) => {
 export const getStaticPaths = async () => {
   const {
     data: { drinks },
-  } = await axios(`http://localhost:3000/api/hello`);
+  } = await axios(
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic`
+  );
   return {
     paths: drinks.map(({ strDrink, idDrink }) => ({
       params: { id: idDrink.toString(), slug: slug(strDrink) },

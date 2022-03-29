@@ -16,7 +16,9 @@ export const getServerSideProps = async (req) => {
   const {
     query: { id },
   } = req;
-  const { data } = await axios(`http://localhost:3000/api/hello`);
+  const { data } = await axios(
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic`
+  );
   const oneCocktail = data.drinks.filter((drink) => drink.idDrink === id)[0];
   return {
     props: {

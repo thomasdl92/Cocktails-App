@@ -11,7 +11,9 @@ const Detail = () => {
     (async () => {
       const {
         data: { drinks },
-      } = await axios(`http://localhost:3000/api/hello`);
+      } = await axios(
+        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic`
+      );
       setCocktail(drinks.filter((cocktail) => cocktail.idDrink === id)[0]);
     })();
   }, []);

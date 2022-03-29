@@ -34,7 +34,9 @@ const serverside = ({ drinks }) => {
 export async function getServerSideProps() {
   const {
     data: { drinks },
-  } = await axios(`http://localhost:3000/api/hello`);
+  } = await axios(
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic`
+  );
   return {
     props: {
       drinks,
